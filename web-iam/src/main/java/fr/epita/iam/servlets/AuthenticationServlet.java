@@ -2,6 +2,7 @@ package fr.epita.iam.servlets;
 
 import java.io.IOException;
 
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,11 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.SessionFactory;
 
 
 @WebServlet(name="AuthenticationServlet", urlPatterns={"/authenticate"})
 public class AuthenticationServlet extends HttpServlet{
 
+	@Inject
+	SessionFactory sFactory;
+	
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger LOGGER = LogManager.getLogger(AuthenticationServlet.class);
@@ -24,5 +29,7 @@ public class AuthenticationServlet extends HttpServlet{
 		String login = req.getParameter("login");
 		String password = req.getParameter("pwd");
 		LOGGER.info("tried to authenticate with this login {}", login);
+		
+		
 	}
 }

@@ -14,14 +14,14 @@ import org.hibernate.Transaction;
 
 import fr.epita.iam.models.Identity;
 
-public class HibernateDAO implements Dao<Identity>{
+public class IdentityDAO implements Dao<Identity>{
 	
-	private static final Logger LOGGER = LogManager.getLogger(HibernateDAO.class);
+	private static final Logger LOGGER = LogManager.getLogger(IdentityDAO.class);
 
 	@Inject
 	SessionFactory sFactory;
 	
-	private HibernateDAO() throws SQLException {
+	private IdentityDAO() throws SQLException {
 	}
 	
 	public void write(Identity identity) throws SQLException{

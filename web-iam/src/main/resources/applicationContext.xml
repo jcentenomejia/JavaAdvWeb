@@ -11,7 +11,7 @@
 		<property name="location" value="test.properties" />
 	</bean>
 	
-	<bean id="daoHibernate" name="daoHibernate" class="fr.epita.iam.services.HibernateDAO" />
+	<bean id="daoHibernate" name="daoHibernate" class="fr.epita.iam.services.IdentityDAO" />
 	<bean id="daoAddress" name="daoAddress" class="fr.epita.iam.services.AddressDAO"></bean>
 	
     <!-- todo : use SpringPropertiesUtil Something to load the placeholders values below: -->
