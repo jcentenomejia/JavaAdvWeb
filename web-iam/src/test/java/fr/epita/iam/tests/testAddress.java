@@ -28,7 +28,7 @@ public class testAddress {
 	public void testDao() throws SQLException{
 			
 		Identity identity = new Identity();
-		identity.setDisplayname("jcenteno");
+		identity.setDisplayname("jorge");
 		identity.setUserType("admin");
 		identity.setBirthDate("1989-12-18");
 		identity.setEmail("jcenteno@gmail.com");
