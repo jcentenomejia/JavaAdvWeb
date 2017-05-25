@@ -62,4 +62,16 @@ public class IdentityDAO implements Dao<Identity>{
 		return identityList;
 		
 	}
+	
+	public Identity authenticate(Identity identity) throws SQLException{
+		LOGGER.info("retrieving identity : {} ", identity);
+		Session session = sFactory.openSession();
+		String queryString = "from Identity as identity where identity.password = :password and identity.displayname = :displayname";
+		Query query = session.createQuery(queryString);
+		query.setParameter("displayname", identity.getDisplayname());
+		query.setParameter("password",  identity.getPassword());
+		List<Identity> identityList = query.list();
+		session.close();
+		return identityList.get(0);
+	}
 }

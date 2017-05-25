@@ -32,6 +32,7 @@ public class testAddress {
 		identity.setUserType("admin");
 		identity.setBirthDate("1989-12-18");
 		identity.setEmail("jcenteno@gmail.com");
+		identity.setPassword("123");
 		
 		Address address = new Address();
 		address.setAddressDesc("74 cours de vincennes");
@@ -53,5 +54,4 @@ public class testAddress {
 		dao.write(address2);
 		dao.search(address2);
 	}
-
 }
