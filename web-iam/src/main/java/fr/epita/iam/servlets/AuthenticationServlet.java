@@ -1,6 +1,7 @@
 package fr.epita.iam.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import fr.epita.iam.models.Identity;
+import fr.epita.iam.services.Authenticate;
 import fr.epita.iam.services.Dao;
 
 @WebServlet(name="AuthenticationServlet", urlPatterns={"/authenticate"})
@@ -42,16 +44,22 @@ public class AuthenticationServlet extends HttpServlet{
 		password = password.trim();
 		
 		LOGGER.info("tried to authenticate with this login {}", login);
-		String[] array = {login,password};
-		List<String> results = Arrays.asList(array);
-		req.getSession().setAttribute("results",results);
-		resp.sendRedirect("results.jsp");
 		
-		/*try {
-			dao.write(identity);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
+		Authenticate auth = new Authenticate();
+		Identity identity = null;
+		
+		try {
+			identity = auth.authenticate(login, password);
+		} catch (SQLException e) {
+			LOGGER.error("Error creating user! {}",e);
+		}
+		
+		if(identity != null){
+			req.getSession().setAttribute("userName",identity.getDisplayname());
+			req.getSession().setAttribute("userID",identity.getId());
+			resp.sendRedirect("welcome.jsp");
+		}else{
+			resp.sendRedirect("index.html");
+		}
 	}
 }
