@@ -59,7 +59,9 @@ public class AuthenticationServlet extends HttpServlet{
 			req.getSession().setAttribute("userID",identity.getId());
 			resp.sendRedirect("welcome.jsp");
 		}else{
-			resp.sendRedirect("index.html");
+		    req.setAttribute("message", "Wrong username or password.");
+		    req.setAttribute("message_color", "red");
+			req.getRequestDispatcher("index.jsp").forward(req, resp);
 		}
 	}
 }

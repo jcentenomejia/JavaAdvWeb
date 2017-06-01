@@ -24,7 +24,9 @@ public class Logout extends HttpServlet {
 		
 		request.getSession().invalidate();
 		
-		response.sendRedirect("index.html");
+		request.setAttribute("message", "Successful logout.");
+		request.setAttribute("message_color", "green");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
