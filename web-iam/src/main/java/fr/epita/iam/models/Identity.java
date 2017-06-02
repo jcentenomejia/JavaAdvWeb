@@ -34,9 +34,8 @@ public class Identity {
 	@Column(name="USER_TYPE")
 	private String userType;
 	
-	//Default
 	public Identity(){
-		
+		//Default
 	}
 	
 	public Identity(String uid, String displayname, String email, String birthDate, String password, String userType) {

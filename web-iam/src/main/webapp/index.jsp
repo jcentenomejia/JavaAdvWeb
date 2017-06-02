@@ -16,6 +16,7 @@
 		<form action="authenticate" method="post" role="form">
 			
 			<p style="color:${message_color};">${message}</p>
+			
 			<div class="form-group">
 				<label>login</label>
 				<input class="form-control" name="login" type="text" placeholder="Enter Login">
