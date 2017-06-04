@@ -19,11 +19,11 @@
 			
 			<div class="form-group">
 				<label>login</label>
-				<input class="form-control" name="login" type="text" placeholder="Enter Login">
+				<input class="form-control" name="login" type="text" placeholder="Enter Login" required>
 			</div>
 			<div class="form-group">
 				<label>password</label>
-				<input class="form-control" name="pwd" type="password" placeholder="Password" >
+				<input class="form-control" name="pwd" type="password" placeholder="Password" required>
 			</div>
 			<button class="btn" type="submit">Login</button>
 		</form>

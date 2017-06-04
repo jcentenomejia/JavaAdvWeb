@@ -39,7 +39,7 @@
     <div class="container">
         <h3 class="text-info">Search Results</h3>
 
-        <form class="form-horizontal" method="post" action="updateOrDelete">
+        <form class="form-horizontal" method="post" action="actionPerformed">
             <div class="table-responsive">
                 <table class="table">
                     <thead>

@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import fr.epita.iam.models.Address;
 import fr.epita.iam.models.Identity;
 
 public class IdentityDAO implements Dao<Identity>{
@@ -62,5 +63,16 @@ public class IdentityDAO implements Dao<Identity>{
 		session.close();
 		return identityList;
 		
+	}
+	
+	public Identity getById(Long id) throws SQLException {
+		LOGGER.info("retrieving identity with id : {} ", id);
+		Session session = sFactory.openSession();
+		String queryString = "from Identity as identity where identity.id = :id";
+		Query query = session.createQuery(queryString);
+		query.setParameter("id", id);
+		List<Identity> identities = query.list();
+		session.close();
+		return identities.get(0);
 	}
 }

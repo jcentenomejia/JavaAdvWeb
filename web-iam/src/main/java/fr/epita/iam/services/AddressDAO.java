@@ -61,5 +61,16 @@ public class AddressDAO implements Dao<Address>{
 		session.close();
 		return addressList;
 		
-	}	
+	}
+	
+	public Address getById(Long id) throws SQLException {
+		LOGGER.info("retrieving address with id : {} ", id);
+		Session session = sFactory.openSession();
+		String queryString = "from Address as address where address.id = :id";
+		Query query = session.createQuery(queryString);
+		query.setParameter("id", id);
+		List<Address> addressList = query.list();
+		session.close();
+		return addressList.get(0);
+	}
 }

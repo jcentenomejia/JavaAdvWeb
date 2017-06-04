@@ -9,5 +9,5 @@ public interface Dao<T> {
 	public void delete(T instance) throws SQLException;
 	public void update(T instance) throws SQLException;
 	public List<T> search(String searchString) throws SQLException;
-	
+	public T getById(Long id) throws SQLException;
 }
