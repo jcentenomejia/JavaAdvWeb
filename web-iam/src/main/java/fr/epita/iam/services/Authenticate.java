@@ -20,8 +20,17 @@ public class Authenticate {
 	
 	private static final Logger LOGGER = LogManager.getLogger(Authenticate.class);
 	
-	public Authenticate(){
+	private static Authenticate instance = null;
+	
+	protected Authenticate(){
 		//default constructor
+	}
+	
+	public static Authenticate getInstance(){
+		if(instance == null){
+			instance = new Authenticate();
+		}
+		return instance;
 	}
 	
 	public Identity authenticate(String user, String password) throws SQLException{
@@ -37,7 +46,6 @@ public class Authenticate {
 		query.setParameter("password",  password);
 		List<Identity> identityList = query.list();
 		session.close();
-		
 		
 		if(identityList.isEmpty()){
 			return null;

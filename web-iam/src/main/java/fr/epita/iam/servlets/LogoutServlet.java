@@ -19,7 +19,7 @@ public class LogoutServlet extends HttpServlet {
 
 	private static final Logger LOGGER = LogManager.getLogger(AuthenticationServlet.class);
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LOGGER.info("User {} is logging out.", request.getSession().getAttribute("userName"));
 		
 		request.getSession().invalidate();

@@ -1,0 +1,58 @@
+package fr.epita.iam.servlets;
+
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+import fr.epita.iam.models.Identity;
+import fr.epita.iam.services.Dao;
+
+
+@WebServlet("/CreationServlet")
+public class CreationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	private static final Logger LOGGER = LogManager.getLogger(CreationServlet.class);
+	
+	@Autowired
+	Dao<Identity> dao;
+	
+    public CreationServlet() {
+        super();
+    }	
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
+		
+		String username = request.getParameter("userName");
+		String pass = request.getParameter("password");
+		String date = request.getParameter("date");
+		String email = request.getParameter("email");
+		
+		Identity identity = new Identity();
+		identity.setBirthDate(date);
+		identity.setDisplayname(username);
+		identity.setEmail(email);
+		identity.setPassword(pass);
+		
+		try {
+			dao.write(identity);
+		} catch (SQLException e) {
+			LOGGER.info("Identity creation failed: {} , {}", identity , e);
+		}
+		
+		LOGGER.info("New identity: {} , {}", username, pass);
+		
+	}
+
+}

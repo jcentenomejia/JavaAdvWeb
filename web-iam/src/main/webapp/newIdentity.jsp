@@ -17,26 +17,26 @@
         <h2 class="text-info">New Identity Creation </h2>
         <a href="welcome.jsp">&lt;&lt; back</a>
     </div>
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" action="CreationServlet" method="post">
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="firstName">First Name</label>
+            <label class="col-sm-2 control-label" for="userName">Username</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="firstName" type="email" placeholder="First Name" />
+                <input class="form-control" id="username" name="userName" type="text" placeholder="Username" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="lastName">Last Name</label>
+            <label class="col-sm-2 control-label" for="email">Email</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="email" type="email" placeholder="Last Name" />
+                <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="lastName">Email</label>
+            <label class="col-sm-2 control-label" for="password">Password</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="lastName" type="email" placeholder="Email" />
+                <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
             </div>
         </div>
 
@@ -44,7 +44,7 @@
             <label class="col-sm-2 control-label" for="date">Birth Date</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="date" type="date" placeholder="Birth Date" />
+                <input class="form-control" id="date" type="date" name="date" placeholder="Birth Date" />
             </div>
         </div>
         <div class="form-group">

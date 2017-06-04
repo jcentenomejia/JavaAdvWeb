@@ -41,11 +41,10 @@ public class AuthenticationServlet extends HttpServlet{
 		
 		LOGGER.info("tried to authenticate with this login {}", login);
 		
-		Authenticate auth = new Authenticate();
 		Identity identity = null;
 		
 		try {
-			identity = auth.authenticate(login, password);
+			identity = Authenticate.getInstance().authenticate(login, password);
 		} catch (SQLException e) {
 			LOGGER.error("Error creating user! {}",e);
 		}
@@ -53,6 +52,7 @@ public class AuthenticationServlet extends HttpServlet{
 		if(identity != null){
 			req.getSession().setAttribute("userName",identity.getDisplayname());
 			req.getSession().setAttribute("userID",identity.getId());
+			req.getSession().setAttribute("userType",identity.getUserType());
 			resp.sendRedirect("welcome.jsp");
 		}else{
 		    req.setAttribute("message", "Wrong username or password.");
