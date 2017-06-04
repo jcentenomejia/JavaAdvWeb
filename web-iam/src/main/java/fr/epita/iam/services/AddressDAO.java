@@ -51,12 +51,12 @@ public class AddressDAO implements Dao<Address>{
 		session.close();
 	}
 	
-	public List<Address> search(Address address) throws SQLException {
-		LOGGER.info("retrieving address : {} ", address);
+	public List<Address> search(String searchString) throws SQLException {
+		LOGGER.info("retrieving address with search criteria : {} ", searchString);
 		Session session = sFactory.openSession();
 		String queryString = "from Address as address where address.addressDesc like :addressDesc";
 		Query query = session.createQuery(queryString);
-		query.setParameter("addressDesc", "%" + address.getAddressDesc() +"%");
+		query.setParameter("addressDesc", "%" + searchString +"%");
 		List<Address> addressList = query.list();
 		session.close();
 		return addressList;

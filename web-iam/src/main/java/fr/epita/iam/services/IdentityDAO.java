@@ -51,12 +51,13 @@ public class IdentityDAO implements Dao<Identity>{
 		session.close();
 	}
 	
-	public List<Identity> search(Identity identity) throws SQLException {
-		LOGGER.info("retrieving identity : {} ", identity);
+	public List<Identity> search(String searchString) throws SQLException {
+		LOGGER.info("Searching identity containing: {}", searchString);
 		Session session = sFactory.openSession();
-		String queryString = "from Identity as identity where identity.displayname like :displayname";
+		String queryString = "from Identity as identity where identity.displayname like :criteria or "
+				+ "identity.email like :criteria or identity.birthDate like :criteria";
 		Query query = session.createQuery(queryString);
-		query.setParameter("displayname", "%" + identity.getDisplayname()+"%");
+		query.setParameter("criteria", "%" + searchString+"%");
 		List<Identity> identityList = query.list();
 		session.close();
 		return identityList;

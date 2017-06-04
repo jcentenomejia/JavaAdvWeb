@@ -17,12 +17,12 @@
         <h2 class="text-info">New Identity Creation </h2>
         <a href="welcome.jsp">&lt;&lt; back</a>
     </div>
-    <form class="form-horizontal" role="form" action="CreationServlet" method="post">
+    <form class="form-horizontal" role="form" action="CreationServlet" method="post" data-toggle="validator">
         <div class="form-group">
             <label class="col-sm-2 control-label" for="userName">Username</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="username" name="userName" type="text" placeholder="Username" />
+                <input class="form-control" id="username" name="userName" type="text" placeholder="Username" required/>
             </div>
         </div>
         <div class="form-group">
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" for="password">Password</label>
+            <label class="col-sm-2 control-label" for="password" required>Password</label>
 
             <div class="col-sm-10">
                 <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
@@ -48,7 +48,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">...</label>
+            <label class="col-sm-2 control-label" for="date">User type</label>
+
+            <div class="col-sm-10">
+                <select class="form-control" id="userType" name="userType"> 
+                	<option value="user">User</option>
+                	<option value="admin">Admin</option>
+                </select>
+            </div>
         </div>
 
 

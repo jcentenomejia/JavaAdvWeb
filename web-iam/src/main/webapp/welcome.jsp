@@ -17,6 +17,7 @@
         </div>
     </div>
     <div class="container">
+    	<p style="color:${message_color};">${message}</p>
         <div class="row">
             <div class="col-xs-6">
                 <h4>Identity Creation</h4>

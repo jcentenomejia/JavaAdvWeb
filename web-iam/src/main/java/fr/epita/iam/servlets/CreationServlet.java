@@ -38,15 +38,20 @@ public class CreationServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		String date = request.getParameter("date");
 		String email = request.getParameter("email");
+		String type = request.getParameter("userType");
 		
 		Identity identity = new Identity();
 		identity.setBirthDate(date);
 		identity.setDisplayname(username);
 		identity.setEmail(email);
 		identity.setPassword(pass);
+		identity.setUserType(type);
 		
 		try {
 			dao.write(identity);
+			request.setAttribute("message", "New identity created successfully.");
+			request.setAttribute("message_color", "green");
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		} catch (SQLException e) {
 			LOGGER.info("Identity creation failed: {} , {}", identity , e);
 		}

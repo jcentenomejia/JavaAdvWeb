@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import fr.epita.iam.models.Address;
 import fr.epita.iam.models.Identity;
-import fr.epita.iam.services.AddressDAO;
 import fr.epita.iam.services.Dao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,9 +48,12 @@ public class testAddress {
 		address2.setIdentity(identity);
 		
 		dao.write(address);
-		dao.search(address);
+		dao.search(address.getAddressDesc());
 		
 		dao.write(address2);
-		dao.search(address2);
+		dao.search(address2.getAddressDesc());
+		
+		LOGGER.info("New address: {} ", address);
+		LOGGER.info("New address: {} ", address2);
 	}
 }
