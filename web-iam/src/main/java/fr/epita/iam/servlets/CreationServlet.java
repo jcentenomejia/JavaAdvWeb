@@ -31,6 +31,18 @@ public class CreationServlet extends HttpServlet {
         super();
     }	
     
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	String permission = request.getSession().getAttribute("userType").toString();
+    	
+    	if(!"admin".equals(permission)){
+			request.setAttribute("message", "You have no permission to create.");
+			request.setAttribute("message_color", "red");
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
+    	}else{
+    		response.sendRedirect("newIdentity.jsp");
+    	}
+    }
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 		
@@ -39,14 +51,14 @@ public class CreationServlet extends HttpServlet {
 		String date = request.getParameter("date");
 		String email = request.getParameter("email");
 		String type = request.getParameter("userType");
-		
+			
 		Identity identity = new Identity();
 		identity.setBirthDate(date);
 		identity.setDisplayname(username);
 		identity.setEmail(email);
 		identity.setPassword(pass);
 		identity.setUserType(type);
-		
+			
 		try {
 			dao.write(identity);
 			request.setAttribute("message", "New identity created successfully.");
@@ -55,9 +67,8 @@ public class CreationServlet extends HttpServlet {
 		} catch (SQLException e) {
 			LOGGER.info("Identity creation failed: {} , {}", identity , e);
 		}
-		
+			
 		LOGGER.info("New identity: {} , {}", username, pass);
-		
+	
 	}
-
 }

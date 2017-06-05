@@ -24,7 +24,7 @@
 
                 <p>Thanks to this action, you can create a brand new Identity, you can click on the button below to
                     begin</p>
-                <form action="newIdentity.jsp">
+                <form action="CreationServlet">
                 	<button>Create!</button>
                 </form>
             </div>
@@ -39,8 +39,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 </body>
 </html>

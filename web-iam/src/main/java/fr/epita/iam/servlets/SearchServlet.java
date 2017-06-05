@@ -36,6 +36,7 @@ public class SearchServlet extends HttpServlet {
 			List<Identity> identities = dao.search(searchString);
 			LOGGER.info("Search: {}", identities);
 			request.setAttribute("identities", identities);
+			request.setAttribute("visibility", "block");
 		    request.getRequestDispatcher("searchIdentity.jsp").forward(request, response);
 		} catch (SQLException e) {
 			LOGGER.error("An error occured during the search: {}", e);

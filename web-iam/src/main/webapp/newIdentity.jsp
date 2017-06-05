@@ -44,7 +44,7 @@
             <label class="col-sm-2 control-label" for="date">Birth Date</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="date" type="date" name="date" placeholder="Birth Date" />
+                <input class="form-control" id="date" type="date" name="date" placeholder="yyyy-MM-dd" />
             </div>
         </div>
         <div class="form-group">

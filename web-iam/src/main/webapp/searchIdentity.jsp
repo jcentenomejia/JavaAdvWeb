@@ -10,6 +10,11 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    function reloadPage(){
+        window.location = "searchIdentity.jsp";
+    }
+</script>
 </head>
 <body>
 <div xmlns="http://www.w3.org/1999/xhtml" class="bs-example">
@@ -18,9 +23,9 @@
         <a href="welcome.jsp">&lt;&lt; back</a>
 
         <h3 class="text-info">Search Criteria</h3>
+        <p style="color:${message_color};">${message}</p>
     </div>
-
-
+	
     <form class="form-horizontal" role="form" action="SearchServlet" method="post">
         <div class="form-group">
             <label class="col-sm-2 control-label" for=searchCriteria>Search</label>
@@ -36,7 +41,8 @@
             </div>
         </div>
     </form>
-    <div class="container">
+	<c:set var="visibility" value="${(empty visibility) ? 'none' : visibility}" />
+    <div class="container" style="display:${visibility}">
         <h3 class="text-info">Search Results</h3>
 
         <form class="form-horizontal" method="post" action="actionPerformed">
@@ -54,7 +60,7 @@
                     <tbody>
                     <c:forEach items="${identities}" var="identity">
 					    <tr>      
-					        <td> <input name="selection" type="radio" value="${identity.id}"/></td>
+					        <td> <input name="selection" type="radio" value="${identity.id}" required/></td>
 					        <td>${identity.id}</td>
 					        <td>${identity.displayname}</td>
 					        <td>${identity.email}</td>
@@ -69,7 +75,7 @@
                 <div class=" col-sm-offset-2 col-sm-10 text-right">
                     <button class="btn btn-primary" type="submit" name="action" value="update">Modify</button>
                     <button class="btn btn-primary" type="submit" name="action" value="delete">Delete</button>
-                    <button class="btn btn-default" type="submit" name="action" value="cancel">Cancel</button>
+                    <button class="btn btn-default" type="button" id="cancelButton" onclick="javascript:reloadPage()" >Cancel</button>
                 </div>
             </div>
         </form>
