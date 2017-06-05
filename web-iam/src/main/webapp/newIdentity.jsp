@@ -29,14 +29,14 @@
             <label class="col-sm-2 control-label" for="email">Email</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="email" name="email" type="email" placeholder="Email" />
+                <input class="form-control" id="email" name="email" type="email" placeholder="Email" required/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" for="password" required>Password</label>
 
             <div class="col-sm-10">
-                <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
+                <input class="form-control" id="password" type="password" name="password" placeholder="Password" required/>
             </div>
         </div>
 

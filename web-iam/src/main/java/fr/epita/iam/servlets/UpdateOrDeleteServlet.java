@@ -31,15 +31,15 @@ public class UpdateOrDeleteServlet extends HttpServlet{
 		SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
 		
 		String actionReceived = req.getParameter("action");
-		long id = Long.valueOf(req.getParameter("selection"));
 		
 		if("cancel".equals(actionReceived)){
 			resp.sendRedirect("searchIdentity.jsp");
 		}else{
 		
 			Identity identity = null;
-			
+			long id = 0;
 			try {
+				id = Long.valueOf(req.getParameter("selection"));
 				identity = dao.getById(id);
 			} catch (SQLException e) {
 				LOGGER.error("Error retrieving identity with id: {} , {}", id,e);

@@ -13,7 +13,7 @@
 <div class="bs-example">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="text-info">Welcome to the IAM System </h1><a href="logout">disconnect</a>
+            <h1 class="text-info">Welcome to the IAM System </h1><%=session.getAttribute("userName")%><a href="logout"> disconnect</a>
         </div>
     </div>
     <div class="container">
