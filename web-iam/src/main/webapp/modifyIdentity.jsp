@@ -10,7 +10,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<div xmlns="http://www.w3.org/1999/xhtml" class="container">
+        <h2 class="text-info">Identity Modification</h2>
+        <a href="welcome.jsp">&lt;&lt; back</a>
+    </div>
 <form xmlns="http://www.w3.org/1999/xhtml" class="form-horizontal" role="form" method="post" action="update">
 		
 		<div class="form-group">
